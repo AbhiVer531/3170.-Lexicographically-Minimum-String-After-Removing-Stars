@@ -1,0 +1,13 @@
+class Solution:
+    def clearStars(self, s: str) -> str:
+        stack = []
+        for ch in s:
+            if ch != '*':
+                stack.append(ch)
+            else:
+                min_char = min(stack)
+                for i in range(len(stack)-1, -1, -1):
+                    if stack[i] == min_char:
+                        del stack[i]
+                        break
+        return ''.join(stack)
